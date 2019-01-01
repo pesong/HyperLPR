@@ -33,13 +33,14 @@ std::string decodeResults(cv::Mat code_table,std::vector<std::string> mapping_ta
 
 int main()
 {
-    cv::Mat image = cv::imread("res/cache/chars_segment.jpg");
+    cv::Mat image = cv::imread("/home/gs/code/HyperLPR/Prj-Linux/lpr/1.jpg");
 //    cv::transpose(image,image);
-
-//    cv::resize(image,image,cv::Size(160,40));
-    cv::imshow("xxx",image);
+   
+//    std::cout<< image << std::endl;
+//  cv::resize(image,image,cv::Size(160,40));
+    cv::imshow("image_in",image);
     cv::waitKey(0);
-    pr::SegmentationFreeRecognizer recognizr("model/SegmenationFree-Inception.prototxt","model/ISegmenationFree-Inception.caffemodel");
+    pr::SegmentationFreeRecognizer recognizr("/home/gs/code/HyperLPR/Prj-Linux/lpr/model/SegmenationFree-Inception.prototxt","/home/gs/code/HyperLPR/Prj-Linux/lpr/model/SegmenationFree-Inception.caffemodel");
     std::pair<std::string,float> res = recognizr.SegmentationFreeForSinglePlate(image,pr::CH_PLATE_CODE);
     std::cout<<res.first<<" "
                   <<res.second<<std::endl;

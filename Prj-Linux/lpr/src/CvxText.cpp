@@ -113,6 +113,7 @@ int CvxText::putText(cv::Mat& img, const char* text, cv::Point pos, cv::Scalar c
     return i;
 }
 
+
 int CvxText::putText(cv::Mat& img, const wchar_t* text, cv::Point pos, cv::Scalar color)
 {
     if (img.data == nullptr) return -1;

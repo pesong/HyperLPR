@@ -1,7 +1,7 @@
 # Editor
 *~
 *.swp
-
+.idea/
 # Build files
 Prj-Linux/lpr/TEST_*
 Prj-Linux/*build*/

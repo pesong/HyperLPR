@@ -1,0 +1,10 @@
+/home/gs/code/HyperLPR/Prj-Linux/lpr/src/CMakeFiles/edit_cache.dir
+/home/gs/code/HyperLPR/Prj-Linux/lpr/src/CMakeFiles/rebuild_cache.dir
+/home/gs/code/HyperLPR/Prj-Linux/lpr/src/CMakeFiles/TEST_RECOGNIZATION.dir
+/home/gs/code/HyperLPR/Prj-Linux/lpr/src/CMakeFiles/TEST_PIPLINE.dir
+/home/gs/code/HyperLPR/Prj-Linux/lpr/src/CMakeFiles/TEST_SEGMENTATIONFREE.dir
+/home/gs/code/HyperLPR/Prj-Linux/lpr/src/CMakeFiles/TEST_Detection.dir
+/home/gs/code/HyperLPR/Prj-Linux/lpr/src/CMakeFiles/TEST_FINEMAPPING.dir
+/home/gs/code/HyperLPR/Prj-Linux/lpr/src/CMakeFiles/TEST_SEGMENTATION.dir
+/home/gs/code/HyperLPR/Prj-Linux/lpr/src/CMakeFiles/HyperLPR_cpp.dir
+/home/gs/code/HyperLPR/Prj-Linux/lpr/src/CMakeFiles/TEST_FASTDESKEW.dir
