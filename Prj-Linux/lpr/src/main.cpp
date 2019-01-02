@@ -25,6 +25,20 @@ int main(){
         exit(-1);
     }
 
+    //视频写入对象
+    cv::VideoWriter videoWriter;
+    //写入视频文件名
+    std::string outFlie = "/home/gs/Documents/detect.mp4";
+    //获得帧的宽高
+    int w = static_cast<int>(cap.get(CV_CAP_PROP_FRAME_WIDTH));
+    int h = static_cast<int>(cap.get(CV_CAP_PROP_FRAME_HEIGHT));
+    cv::Size S(w, h);
+    //获得帧率
+    double r = cap.get(CV_CAP_PROP_FPS);
+    //打开视频文件，准备写入
+    videoWriter.open(outFlie, CV_FOURCC('D', 'I', 'V', 'X'), r, S, true);
+
+    bool stop = false;
 
     cv::Mat frame;
     CvxText text("/home/gs/code/HyperLPR/Prj-Linux/lpr/src/SimHei.ttf");
@@ -34,12 +48,11 @@ int main(){
 
 
 
-    while(1){
+    while(!stop){
 
 //        cv::Mat frame = cv::imread("/home/gs/code/HyperLPR/Prj-Linux/lpr/1.jpg");
         cap.read(frame);
         std::vector<pr::PlateInfo> res = prc.RunPiplineAsImage(frame, pr::SEGMENTATION_FREE_METHOD);
-
 
         for(int i = 0; i < res.size(); i++){
             if(res[i].confidence>0.85) {
@@ -75,8 +88,17 @@ int main(){
             }
         }
 
-        cv::imshow("image",frame);
-        if(cv::waitKey(20)>0) //exit
+        cv::imshow("Video",frame);
+        videoWriter.write(frame);
+        if(cv::waitKey(20)>0){
+            stop = true;
             break;
+        }
     }
+
+    //释放对象
+    cap.release();
+    videoWriter.release();
+    cvDestroyWindow("Video");
+
 }
