@@ -20,7 +20,9 @@ int main(){
                     );
 
     cv::VideoCapture cap;
-    cap.open(1);
+//    cap.open(1);
+    cap.open("/home/gs/code/HyperLPR/Prj-Linux/detect.mp4");
+
     if(!cap.isOpened()){
         exit(-1);
     }
@@ -28,7 +30,7 @@ int main(){
     //视频写入对象
     cv::VideoWriter videoWriter;
     //写入视频文件名
-    std::string outFlie = "/home/gs/Documents/detect.mp4";
+    std::string outFlie = "/home/gs/code/HyperLPR/Prj-Linux/detect_out.mp4";
     //获得帧的宽高
     int w = static_cast<int>(cap.get(CV_CAP_PROP_FRAME_WIDTH));
     int h = static_cast<int>(cap.get(CV_CAP_PROP_FRAME_HEIGHT));
@@ -36,7 +38,7 @@ int main(){
     //获得帧率
     double r = cap.get(CV_CAP_PROP_FPS);
     //打开视频文件，准备写入
-    videoWriter.open(outFlie, CV_FOURCC('D', 'I', 'V', 'X'), r, S, true);
+    videoWriter.open(outFlie, CV_FOURCC('D', 'I', 'V', 'X'), 24, S, true);
 
     bool stop = false;
 
@@ -55,7 +57,7 @@ int main(){
         std::vector<pr::PlateInfo> res = prc.RunPiplineAsImage(frame, pr::SEGMENTATION_FREE_METHOD);
 
         for(int i = 0; i < res.size(); i++){
-            if(res[i].confidence>0.85) {
+            if(res[i].confidence>0.95) {
                 std::cout << res[i].getPlateName() << " " << res[i].confidence << std::endl;
 
                 std::string label_result = res[i].getPlateName();
@@ -90,7 +92,7 @@ int main(){
 
         cv::imshow("Video",frame);
         videoWriter.write(frame);
-        if(cv::waitKey(20)>0){
+        if(cv::waitKey(5)>0){
             stop = true;
             break;
         }
